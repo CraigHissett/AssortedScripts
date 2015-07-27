@@ -1,25 +1,38 @@
-import pyb
-#import RPi.GPIO as GPIO
-#from time import sleep
+from pyb import Timer
+from pyb import Pin
+from network import WLAN
+from pyb import Sleep
+
+def Setup_Pins()
+ # initialize GPIO7 and GPIO 8 in gpio mode (af=0) and make output
+ # These will be the standard pins required for motor control
+ LMotorA = Pin('GPIO7', af=0, mode=Pin.OUT)
+ RMotorA = Pin('GPIO8', af=0, mode=Pin.OUT)
+ # PWM pins, although not configured in this iteration of code
+ LMotorB = Pin('GPIO9', af=0, mode=Pin.OUT)
+ RMotorB = Pin('GPIO10', af=0, mode=Pin.OUT)
+ LMotorA.low()
+ RMotorA.low()
+ LMotorB.low()
+ RMotorB.low()
+
+def MotorTest()
+ print "Turning motors on"
+ LMotorA.high()
+ RMotorA.high()
+ LMotorB.low()
+ RMotorB.low()
+ sleep(2)
  
-GPIO.setmode(GPIO.BOARD)
- 
-Motor1A = 16
-Motor1B = 18
-Motor1E = 22
- 
-GPIO.setup(Motor1A,GPIO.OUT)
-GPIO.setup(Motor1B,GPIO.OUT)
-GPIO.setup(Motor1E,GPIO.OUT)
- 
-print "Turning motor on"
-GPIO.output(Motor1A,GPIO.HIGH)
-GPIO.output(Motor1B,GPIO.LOW)
-GPIO.output(Motor1E,GPIO.HIGH)
- 
-sleep(2)
- 
-print "Stopping motor"
-GPIO.output(Motor1E,GPIO.LOW)
- 
-GPIO.cleanup()
+ print "Stopping motor"
+ LMotorA.low()
+ RMotorA.low()
+ LMotorB.low()
+ RMotorB.low())
+ sleep(2)
+
+
+Setup_Pins()
+
+While True:
+ MotorTest()
