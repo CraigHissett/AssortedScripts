@@ -1,6 +1,5 @@
 from pyb import Timer
 from pyb import Pin
-from network import WLAN
 from pyb import Sleep
 
 def Setup_Pins()
@@ -22,14 +21,14 @@ def MotorTest()
  RMotorA.high()
  LMotorB.low()
  RMotorB.low()
- sleep(2)
+ Sleep(2)
  
  print "Stopping motor"
  LMotorA.low()
  RMotorA.low()
  LMotorB.low()
  RMotorB.low())
- sleep(2)
+ Sleep(2)
 
 
 Setup_Pins()
