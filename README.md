@@ -1,2 +1,2 @@
 # WiPy
-Folder of Scripts for uploading to the WiPy
+Random scripts for random devices
